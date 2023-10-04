@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayer time</title>
+
+  <link rel="stylesheet" href="../css/style2.css">
+  <link rel="icon" type="image/x-icon" href="../img/download.png">
+</head>
+<body>
+   
+    
+
+<!-- html -->
+
+  
+<div class="home-second">
+ 
+
+  <div class="first">
+      <button id="back-btn2">
+          <span>الرئيسية</span>
+        </button>
+      <h1 id="cityText">فلسطين القدس</h1>
+      <p class="td2" ><span id="today2"> date</span> :اليوم </p>
+        </div>
+  
+        <div class="beautiful-line"></div>
+         <div class="second">
+  
+  
+          <div class="card">
+              <div class="card__content">
+                  <div class="prayer"> <p>الفجر</p></div>
+                  <div  class="time"><p id="tmeF2">5:30</p></div>
+              </div>
+          </div>
+  
+              <div class="card">
+                  <div class="card__content">
+                      <div class="prayer"> <p>الظهر</p></div>
+                      <div class="time"><p id="tmeD2">5:30</p></div>
+                  </div>
+              </div>
+  
+              <div class="card">
+                  <div class="card__content">
+                      <div class="prayer"> <p>العصر</p></div>
+                      <div  class="time"><p id="tmeA2">5:30</p></div>
+                  </div>
+              </div>
+  
+              <div class="card">
+                  <div class="card__content">
+                      <div class="prayer"> <p>المغرب</p></div>
+                      <div  class="time"><p id="tmeM2">5:30</p></div>
+                  </div>
+              </div>
+  
+              <div class="card">
+                  <div class="card__content">
+                      <div class="prayer"> <p>العشاء</p></div>
+                      <div  class="time"><p id="tmeI2">5:30</p></div>
+                  </div>
+              </div>
+              
+   
+             
+  
+                              </div>
+  
+  
+  
+   <div class="third">
+     
+      <select id="mySelect2" name="mySelect">
+  
+      </select>
+      
+    
+  
+     
+         
+       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+let cityText=document.getElementById("cityText")
+let tmF=document.getElementById("tmeF2")
+let tmD=document.getElementById("tmeD2")
+let tmA=document.getElementById("tmeA2")
+let tmM=document.getElementById("tmeM2")
+let tmI=document.getElementById("tmeI2")
+let today=document.getElementById("today2")
+
+let mySelect=document.getElementById("mySelect2")
+
+
+
+console.log()
+
+let cities= [
+             "فلسطين(القدس)",
+             "السعودية (المدينة المنورة)",
+              " السعودية (مكة المكرمة)",
+              "السعودية (الرياض)" ,
+              "مصر (القاهرة)",
+              "مصر (الاسكندرية) ",
+              "المغرب (الرباط) ",
+              "تونس (تونس) "]
+
+
+
+for (let city of cities)
+{
+ const content=
+  `<option>${city}</option>`
+
+  mySelect.innerHTML+=content
+}
+
+
+
+async function fetchData(city, country) {
+
+   
+const url = `http://api.aladhan.com/v1/timingsByCity?city=${encodeURIComponent(city)}&country=${encodeURIComponent(country)}&method=3`;
+
+try {
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+ 
+  const data = await response.json(); 
+
+
+
+
+
+   let prayTime=data.data.timings
+  let laDate=data.data.date.gregorian.date
+  // console.log(tmeF); 
+  today.innerHTML=laDate
+  tmF.innerText = prayTime.Fajr;
+  tmD.textContent = prayTime.Dhuhr;
+  tmA.textContent = prayTime.Asr;
+  tmM.textContent = prayTime.Maghrib;
+  tmI.textContent = prayTime.Isha;
+
+
+
+} catch (error) {
+
+
+  console.error('An error occurred:', error);
+}
+
+}
+
+
+fetchData("PS-JEM", "PS")
+
+
+mySelect.addEventListener("change" , ()=>{
+
+ 
+
+  if (mySelect.value== "فلسطين(القدس)")
+  {
+
+    fetchData("PS-JEM", "PS")
+  }
+
+  else if(mySelect.value=="السعودية (المدينة المنورة)")
+    {
+     fetchData("SA-03", "SA")
+     cityText.textContent=mySelect.value
+    }
+
+    else if(mySelect.value=="مصر (الاسكندرية)")
+    {
+     fetchData("EG-ALX", "EG")
+     cityText.textContent=mySelect.value
+    }
+
+    else if(mySelect.value=="المغرب (الرباط)")
+    {
+     fetchData("MA-04", "MA")
+     cityText.textContent=mySelect.value
+    }
+
+
+    else if(mySelect.value=="مصر (القاهرة)")
+    {
+     fetchData("EG-C", "EG")
+     cityText.textContent=mySelect.value
+    }
+
+
+    else if(mySelect.value=="تونس (تونس)")
+    {
+     fetchData("TN-11", "TN")
+     cityText.textContent=mySelect.value
+    }
+
+    else if(mySelect.value=="السعودية (الرياض)")
+    {
+     fetchData("SA-01", "SA")
+     cityText.textContent=mySelect.value
+    }
+
+    else if(mySelect.value==  "السعودية (مكة المكرمة)")
+    {
+     fetchData("SA-02", "SA")
+     cityText.textContent=mySelect.value
+    }
+})
+
+
+let backBtn=document.getElementById("back-btn2")
+
+backBtn.addEventListener("click" ,()=>{
+    window.location="../html/index.html";
+})
+
+</script>
+
+
+ 
+</body>
+</html>

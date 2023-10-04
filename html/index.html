@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayer time</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="../img/download.png">
+      
+</head>
+<body>
+    
+<div class="home">
+
+<!-- <header>
+    <div>
+    <h2>N-Islam</h4>
+    </div>
+    <div class="place">
+        <button id="btn1" class="menu__icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+</header> -->
+<main>
+
+
+  <div class="wrapper">
+
+
+  <div class="section">
+    <div class="top_navbar">
+      
+        <div class="hamburger">
+            <a href="#">
+                <i class="fas fa-bars"></i>
+            </a>
+
+        </div>
+        <h3 class="logo">N-ISLAM</h3>
+    </div>
+
+</div>
+
+
+
+
+
+ <div class="sidebar">
+
+
+<h3 class="text"  >مرحبا بك  في موقعنا</h3>
+
+    <ul>
+     <li><a href="#">
+    <span id="item1" class="item">الرئيسية</span>
+    
+
+    <li><a href="#">
+      <span id="item2" class="item">مواقيت الصلاة في الجزائر</span>
+     
+       </a></li>
+       <li><a href="#">
+        <span id="item3" class="item">مواقيت الصلاة في الدول العربية</span>
+       
+         </a></li>
+         <li><a href="#">
+          <span id="item4" class="item">اسماء الله الحسنى  (coming soon)</span>
+         
+           </a></li>
+
+           <li><a href="#">
+            <span id="item5" class="item"> قران     (coming soon)</span>
+           
+             </a></li>
+    </ul>
+
+ </div>
+
+
+  </div>
+
+
+
+  
+<div class="center">
+
+    <!-- <h1> مواقيت الصلاة في <br>الجزائر</h1> -->
+    <h1 class="title">N-Islam</h1>
+    <p class="des">
+    مرحبًا بكم في موقعنا الإسلامي، حيث تجدون أوقات الصلاة ومعلومات إسلامية مفيدة. هدفنا هو تقديم مصدر موثوق لتعزيز فهمكم للإسلام وتسهيل عبادتكم. تفضلوا بزيارتنا باستمرار للاستفادة من محتوى متنوع وجودة عالية.</p>
+   <div class="button-div">
+     <button id="btn2" class="beautiful-button">ابدا الان</button>
+    </div>
+</div>
+
+
+</main>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+
+let btnAr=document.getElementById("item3")
+let btnDz=document.getElementById("item2")
+let menuBtn=document.getElementById("btn1")
+let startBtn=document.getElementById("btn2")
+var hamburger = document.querySelector(".hamburger");
+
+
+
+startBtn.addEventListener("click" , ()=>{
+  window.location="../html/second.html"
+})
+
+
+btnDz.addEventListener("click" , ()=>{
+  window.location="../html/second.html"
+})
+
+btnAr.addEventListener("click" , ()=>{
+  window.location="../html/third.html"
+})
+    hamburger.addEventListener("click", function(){
+        document.querySelector("body").classList.toggle("active");
+    })
+
+
+
+
+
+
+</script>
+
+
+    
+</body>
+</html>
